@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.ekos.hotel.rest.api.dto.RedefinicaoSenhaDTO;
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.dto.AutenticacaoDTO;
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.dto.EmailRedefinicaoSenhaDTO;
+import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.dto.RedefinicaoSenhaDTO;
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.dto.UsuarioDTO;
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.model.PerfilUsuario;
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.model.Usuario;
@@ -97,7 +97,7 @@ public class AutenticacaoController {
             }
 
             String token = tokenService.generateToken(usuario);
-            String resetLink = "https://ekos.hotels.com.br/redefinir-senha/" + token;
+            String resetLink = "https://gerenciamento.tarefas.com.br/redefinir-senha/" + token;
 
             emailService.enviarEmailRedefinicaoSenha(usuario.getEmail(), resetLink);
 
