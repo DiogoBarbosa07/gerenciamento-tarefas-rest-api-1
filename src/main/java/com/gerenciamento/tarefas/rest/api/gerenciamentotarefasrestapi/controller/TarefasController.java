@@ -34,7 +34,7 @@ public class TarefasController {
         return ResponseEntity.status(HttpStatus.OK).body(tarefaRepository.findAll());
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Object> obterTarefaPeloId(@PathVariable("id") long id) {
         return ResponseEntity.status(HttpStatus.OK).body(tarefaRepository.findById(id));
     }
