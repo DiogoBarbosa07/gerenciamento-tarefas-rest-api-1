@@ -11,7 +11,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.ekos.hotel.rest.api.model.Usuario;
+import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.model.Usuario;
+
 
 @Service
 public class TokenService {
