@@ -1,8 +1,10 @@
 package com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.controller;
 
-import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -29,10 +31,11 @@ public class TarefasController {
         return ResponseEntity.status(HttpStatus.CREATED).body(tarefaRepository.save(tarefas));
     }
 
-    @GetMapping
-    private ResponseEntity<List<Tarefas>> listarTarefas(){
-        return ResponseEntity.status(HttpStatus.OK).body(tarefaRepository.findAll());
-    }
+    
+   @GetMapping
+   public ResponseEntity<Page<Tarefas>> listarTarefas(@PageableDefault(size = 5, page = 0, sort = "titulo")Pageable paginacao){
+       return ResponseEntity.status(HttpStatus.OK).body(tarefaRepository.findAll(paginacao));
+   }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> obterTarefaPeloId(@PathVariable("id") long id) {
@@ -40,12 +43,12 @@ public class TarefasController {
     }
 
     @PutMapping
-    public ResponseEntity<Tarefas> atualizarPop(@RequestBody Tarefas tarefas){
+    public ResponseEntity<Tarefas> atualizarTarefas(@RequestBody Tarefas tarefas){
         return ResponseEntity.status(HttpStatus.OK).body(tarefaRepository.save(tarefas));
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deletarPop(@PathVariable("id")long id){
+    public void deletarTarefas(@PathVariable("id")long id){
         tarefaRepository.deleteById(id);
     }
 
