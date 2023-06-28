@@ -19,7 +19,7 @@ import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.model.Tare
 import com.gerenciamento.tarefas.rest.api.gerenciamentotarefasrestapi.repository.TarefaRepository;
 
 @RestController
-@RequestMapping
+@RequestMapping("/tarefas")
 @Secured({"ROLE_ADMIN"})
 public class TarefasController {
     

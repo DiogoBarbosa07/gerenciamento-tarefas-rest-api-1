@@ -85,4 +85,5 @@ public class Usuario implements UserDetails {
         return Boolean.TRUE;
     }
 
+    
 }
